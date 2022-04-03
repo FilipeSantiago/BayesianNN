@@ -1,4 +1,5 @@
 import tensorflow as tf
+import tensorflow_probability as tfp
 
 
 class BayesianDropoutLayer(tf.keras.layers.Layer):
@@ -9,7 +10,7 @@ class BayesianDropoutLayer(tf.keras.layers.Layer):
         self.dropout = dropout
         self.l = l
         self.prob = 1. - dropout
-        self.bernoulli = tf.compat.v1.distributions.Bernoulli(probs=self.prob, dtype=tf.float32)
+        self.bernoulli = tfp.distributions.Bernoulli(probs=self.prob, dtype=tf.float32)
         self.activation = activation
 
         self.n_in = None
